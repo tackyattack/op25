@@ -372,6 +372,7 @@ void p25p2_tdma::convert_abbrev_msg(const uint8_t byte_buf[], const uint16_t nac
 
 int p25p2_tdma::handle_acch_frame(const uint8_t dibits[], bool fast, bool is_lcch) 
 {
+	
 	int rc, rs_errs = 0;
 	unsigned int i, j = 0;
 	uint8_t bits[512];

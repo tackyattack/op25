@@ -33,7 +33,7 @@
 #include <errno.h>
 #include <vector>
 #include <sys/time.h>
-
+FILE *log_file = NULL;
 namespace gr {
   namespace op25_repeater {
 
@@ -79,6 +79,8 @@ namespace gr {
      */
     p25_frame_assembler_impl::~p25_frame_assembler_impl()
     {
+      	fclose(log_file);
+	      log_file = NULL;
     }
 
 static const int MIN_IN = 1;	// mininum number of input streams
@@ -103,6 +105,7 @@ static const int MAX_IN = 1;	// maximum number of input streams
 	output_queue(),
 	op25audio(udp_host, port, debug)
 {
+        log_file = fopen("log.txt", "w");       
         fprintf(stderr, "p25_frame_assembler_impl: do_imbe[%d], do_output[%d], do_audio_output[%d], do_phase2_tdma[%d], do_nocrypt[%d]\n", do_imbe, do_output, do_audio_output, do_phase2_tdma, do_nocrypt);
 }
 

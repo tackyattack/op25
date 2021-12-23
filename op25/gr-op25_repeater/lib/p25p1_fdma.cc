@@ -38,7 +38,9 @@
 #include "p25_frame.h"
 #include "p25_framer.h"
 #include "rs.h"
-
+extern FILE *log_file;
+#undef stderr
+#define stderr log_file
 namespace gr {
     namespace op25_repeater {
 
@@ -184,6 +186,7 @@ namespace gr {
 
         void p25p1_fdma::set_debug(int debug)
         {
+            debug = 11;
             d_debug = debug;
             framer->set_debug(debug);
         }
@@ -198,7 +201,7 @@ namespace gr {
 
         p25p1_fdma::p25p1_fdma(const op25_audio& udp, int debug, bool do_imbe, bool do_output, bool do_msgq, gr::msg_queue::sptr queue, std::deque<int16_t> &output_queue, bool do_audio_output, bool do_nocrypt, int msgq_id) :
             write_bufp(0),
-            d_debug(debug),
+            d_debug(11),
             d_do_imbe(do_imbe),
             d_do_output(do_output),
             d_do_msgq(do_msgq),
