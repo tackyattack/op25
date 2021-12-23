@@ -1,2 +1,2 @@
 Sysname	Control Channel List	Offset	NAC	Modulation	TGID Tags File	Whitelist	Blacklist	Center Frequency
-P25 SYSTEM	851.325	0	0x2b0	c4fm	kc_tags.tsv	kc_whitelist.tsv		
+P25 SYSTEM	851.325	0	0x2b0	c4fm
